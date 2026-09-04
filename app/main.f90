@@ -1,3 +1,6 @@
+! fpm run --flag "-O3 -fopenmp"
+
+
 PROGRAM main
 
 USE Kinds
@@ -14,7 +17,7 @@ write(*,*) "=== Off_coustics_fortran Initialization ==="
 CALL read_input_file("input.nml", config)
 
 ! 2. Validation / Debug block
-if (config%solver%debug) then
+if (config % solver % debug) then
     write(*,*) "--- Configuration Loaded ---"
     write(*,*) "Acoustic Method:  ", trim(config%solver%method)
     write(*,*) "Data Save Path:   ", trim(config%solver%save_path)

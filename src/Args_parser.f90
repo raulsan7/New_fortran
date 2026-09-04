@@ -1,7 +1,7 @@
 MODULE Args_parser
 
     USE Kinds
-    USE TYPEs
+    USE Types
     
     IMPLICIT NONE
 
@@ -16,6 +16,7 @@ SUBROUTINE read_input_file(file_path, config)
 
     ! Local variables
     INTEGER(I32) :: unit_num, ierr
+    CHARACTER(len=200) :: iomsg
 
     LOGICAL            :: debug
     LOGICAL            :: in_cluster
@@ -100,9 +101,9 @@ SUBROUTINE read_input_file(file_path, config)
         stop
     end if
 
-    read(unit_num, nml=turbine_config, iostat=ierr)
+    read(unit_num, nml=turbine_config, iostat=ierr, iomsg=iomsg)
     if (ierr /= 0) then
-        write(*,*) "ERROR: Failed to read &turbine_config"
+        write(*,*) "ERROR: Failed to read &turbine_config: ", trim(iomsg)
         close(unit_num)
         stop
     end if

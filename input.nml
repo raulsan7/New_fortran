@@ -5,28 +5,28 @@
 &solver_config
     debug = .true.
     in_cluster = .false.
-    save_path = './output/'
+    save_path = './turbine_acoustic_data/'
     method = 'ImageMethod'
 /
 
 &environment_config
-    depth_base = 50.0
+    depth_base = 30.0
     speed_sound_base = 1500.0
     density_base = 1025.0
-    reference_pressure = 1.0
-    attenuation_surface = 0.01
+    reference_pressure = 1E-06
+    attenuation_surface = 1.0
     attenuation_bottom = 0.5
 /
 
 &turbine_config
-    rootname = 'DTU10MW'
-    OP_output_dir = './openfast_outputs/'
+    rootname = 'DTU_DeltaWind_mn_ws11.4'
+    OP_output_dir = '../OP_output/'
     Binary = .true.
     WindSpeed = 11.4
     WindDir = 0.0
-    Depth = 50.0
-    Nmembers = 5
-    Nnodes = 9
+    Depth = 30.0
+    Nmembers = 8
+    Nnodes = 5
     AxisPos = 0.0, 0.0
     BariPos = 0.0, 0.0
 /
