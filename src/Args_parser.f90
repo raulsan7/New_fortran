@@ -86,7 +86,8 @@ SUBROUTINE read_input_file(file_path, config)
         write(*,*) "ERROR: Could not open input file: ", file_path
         stop
     end if
-
+    
+    REWIND(unit_num)
     read(unit_num, nml=solver_config, iostat=ierr)
     if (ierr /= 0) then
         write(*,*) "ERROR: Failed to read &solver_config"
@@ -94,6 +95,7 @@ SUBROUTINE read_input_file(file_path, config)
         stop
     end if
 
+    REWIND(unit_num)
     read(unit_num, nml=environment_config, iostat=ierr)
     if (ierr /= 0) then
         write(*,*) "ERROR: Failed to read &environment_config"
@@ -101,6 +103,7 @@ SUBROUTINE read_input_file(file_path, config)
         stop
     end if
 
+    REWIND(unit_num)
     read(unit_num, nml=turbine_config, iostat=ierr, iomsg=iomsg)
     if (ierr /= 0) then
         write(*,*) "ERROR: Failed to read &turbine_config: ", trim(iomsg)
