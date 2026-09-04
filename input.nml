@@ -1,0 +1,32 @@
+! =====================================================================
+! Configuration file for the acoustic simulation
+! =====================================================================
+
+&solver_config
+    debug = .true.
+    in_cluster = .false.
+    save_path = './output/'
+    method = 'ImageMethod'
+/
+
+&environment_config
+    depth_base = 50.0
+    speed_sound_base = 1500.0
+    density_base = 1025.0
+    reference_pressure = 1.0
+    attenuation_surface = 0.01
+    attenuation_bottom = 0.5
+/
+
+&turbine_config
+    rootname = 'DTU10MW'
+    OP_output_dir = './openfast_outputs/'
+    Binary = .true.
+    WindSpeed = 11.4
+    WindDir = 0.0
+    Depth = 50.0
+    Nmembers = 5
+    Nnodes = 9
+    AxisPos = 0.0, 0.0
+    BariPos = 0.0, 0.0
+/
